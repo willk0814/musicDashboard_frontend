@@ -31,6 +31,14 @@ export default function RecentSongsContainer() {
         fetchRecentSongs();
     }, []);
 
+    if (error) {
+        return (
+            <>
+                <h1>Error</h1>
+            </>
+        )
+    }
+
     return (
         <div className='flex w-[95vw] max-w-[800px] flex-col items-ceneter justify-start border-2 border-white rounded-md p-1'>
 
