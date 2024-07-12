@@ -1,9 +1,10 @@
 import './App.css'
+import RecentSongsContainer from './components/recent_songs/RecentSongsContainer';
 
 function App() {
 
   return (
-    <div className='flex flex-col w-[100vw] h-[100vh] pl-[2.5vw] items-start justify-start bg-[#121212] py-4 space-y-2'>
+    <div className='flex flex-col w-[100vw] h-[100vh] px-[2.5vw] items-center justify-start bg-[#121212] py-4 space-y-2'>
 
       {/* title container */}
       <div className='border-2 border-white rounded-md w-[95vw] max-w-[500px] flex items-start p-1'>
@@ -30,6 +31,9 @@ function App() {
           Write Up
         </a>
       </div>
+
+      {/* Recent Songs */}
+      <RecentSongsContainer />
 
 
     </div>
