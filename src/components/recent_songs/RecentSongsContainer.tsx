@@ -19,7 +19,7 @@ export default function RecentSongsContainer() {
     useEffect(() => {
         const fetchRecentSongs = async () => {
             try {
-                const response = await axios.get('http://18.215.149.105:3000/api/recent-tracks');
+                const response = await axios.get('https://18.215.149.105:3000/api/recent-tracks');
                 console.log('Response data: ', response.data)
                 setRecentSongs(response.data);
                 setLoading(false);
