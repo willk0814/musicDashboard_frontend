@@ -20,7 +20,7 @@ export default function RecentSongsContainer() {
     useEffect(() => {
         const fetchRecentSongs = async () => {
             try {
-                const response = await axios.get('http://api.willkoenig.info:3000/api/recent-tracks');
+                const response = await axios.get('https://api.willkoenig.info/api/recent-tracks');
                 console.log('Response data: ', response.data)
                 setRecentSongs(response.data);
                 setLoading(false);
