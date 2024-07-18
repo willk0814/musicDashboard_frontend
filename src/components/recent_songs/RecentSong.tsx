@@ -26,13 +26,15 @@ export default function RecentSong({ song }: RecentSongProps) {
                     {song.artists.map((artist, indx) => (
                         <h1
                             key={indx}
-                            className="text-xs">{artist}</h1>
+                            className="text-xs">
+                            {indx === 0 ? artist : `, ${artist}`}
+                        </h1>
                     ))}
+                    <h1 className="text-xs mx-1">•</h1>
+                    <h1 className="text-xs">{song.album}</h1>
                 </div>
 
             </div>
-
-            {/* Album */}
 
             {/* Listened At */}
         </div>

@@ -49,7 +49,7 @@ export default function RecentSongsContainer() {
 
                 </div>
             ) : (
-                <div className='flex flex-col justify-center space-y-1'>
+                <div className='flex flex-col justify-start space-y-1 max-h-[400px] overflow-y-scroll'>
                     {recentSongs.map((song, indx) => (
                         <div>
                             <RecentSong key={indx} song={song} />
