@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
+import RecentSong from './RecentSong';
 
 // Define the shape of the song data
 interface Song {
@@ -19,7 +20,7 @@ export default function RecentSongsContainer() {
     useEffect(() => {
         const fetchRecentSongs = async () => {
             try {
-                const response = await axios.get('https://18.215.149.105:3000/api/recent-tracks');
+                const response = await axios.get('http://api.willkoenig.info:3000/api/recent-tracks');
                 console.log('Response data: ', response.data)
                 setRecentSongs(response.data);
                 setLoading(false);
@@ -50,18 +51,8 @@ export default function RecentSongsContainer() {
             ) : (
                 <div className='flex flex-col justify-center space-y-1'>
                     {recentSongs.map((song, indx) => (
-                        <div
-                            key={indx}
-                            className='flex flex-row bg-gray-800 rounded-md'>
-                            <div className='flex-1'>
-                                <h1>{song.name}</h1>
-                            </div>
-                            <div className='flex-1 flex flex-row space-x-2'>
-                                {song.artists.map((artist, indx) => <h1 key={indx}>{artist}</h1>)}
-                            </div>
-                            <div className='flex-1'>
-                                <h1>{song.album}</h1>
-                            </div>
+                        <div>
+                            <RecentSong key={indx} song={song} />
                         </div>
                     ))}
                 </div>
