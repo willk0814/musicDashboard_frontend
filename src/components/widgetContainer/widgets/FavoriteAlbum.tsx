@@ -43,7 +43,7 @@ export default function FavoriteAlbum() {
                 <div className='flex flex-col justify-between h-full'>
                     <div className='flex w-full justify-end'>
                         <img
-                            className='rounded-full h-[100px] w-[100px]'
+                            className='rounded-md h-[100px] w-[100px]'
                             src={data.imgURL} />
                     </div>
                     <div>
