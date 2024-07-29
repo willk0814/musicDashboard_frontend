@@ -1,29 +1,13 @@
 import { useState, useEffect } from 'react';
 
-// individual track component
-function Song() {
-    return (
-        <div className='w-full bg-green-900 rounded-lg p-2 space-x-2 flex flex-row'>
-            <div className='w-[50px] h-[50px] bg-[#121212] rounded-md'></div>
-
-            <div className='flex flex-col justify-between'>
-                <h1 className='text-lg'>Song Title</h1>
-                <div className='flex flex-row space-x-1'>
-                    <h1 className='text-xs'>Artist</h1>
-                    <h1 className='text-xs'>•</h1>
-                    <h1 className='text-xs'>Album</h1>
-                </div>
-            </div>
-        </div>
-    )
-}
-
+// artist interface
 interface Artist {
     name: string;
     id: string;
     _id: string
-}
+};
 
+// track interface
 interface Track {
     _id: string;
     trackId: string;
@@ -36,6 +20,29 @@ interface Track {
     duration: number;
     __v: number;
 };
+
+// song component prop interface
+interface SongProps {
+    track: Track;
+};
+
+// individual track component
+function Song({ track }: SongProps) {
+    return (
+        <div className='w-full bg-green-900 rounded-lg p-2 space-x-2 flex flex-row'>
+            <div className='w-[50px] h-[50px] bg-[#121212] rounded-md'></div>
+
+            <div className='flex flex-col justify-between'>
+                <h1 className='text-lg'>{track.name}</h1>
+                <div className='flex flex-row space-x-1'>
+                    <h1 className='text-xs'>{track.artists[0].name}</h1>
+                    <h1 className='text-xs'>•</h1>
+                    <h1 className='text-xs'>{track.album}</h1>
+                </div>
+            </div>
+        </div>
+    )
+}
 
 // container functional component
 export default function RecentSongsContainer() {
@@ -76,9 +83,9 @@ export default function RecentSongsContainer() {
             {data !== null &&
                 <>
                     {data.map((song, indx) => {
-
                         return (
                             <Song
+                                track={song}
                                 key={indx} />
                         )
                     })}
