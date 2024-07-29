@@ -16,6 +16,7 @@ interface Track {
     album: string;
     albumId: string;
     spotifyLink: string;
+    imgURL: string;
     playedAt: string;
     duration: number;
     __v: number;
@@ -30,14 +31,18 @@ interface SongProps {
 function Song({ track }: SongProps) {
     return (
         <div className='w-full bg-green-900 rounded-lg p-2 space-x-2 flex flex-row'>
-            <div className='w-[50px] h-[50px] bg-[#121212] rounded-md'></div>
+            <div className='w-[50px] h-[50px] bg-[#121212] rounded-md'>
+                <img
+                    className='rounded-md w-[100%] h-[100%]'
+                    src={track.imgURL} />
+            </div>
 
-            <div className='flex flex-col justify-between'>
-                <h1 className='text-lg'>{track.name}</h1>
-                <div className='flex flex-row space-x-1'>
-                    <h1 className='text-xs'>{track.artists[0].name}</h1>
-                    <h1 className='text-xs'>•</h1>
-                    <h1 className='text-xs'>{track.album}</h1>
+            <div className='flex flex-col justify-between overflow-hidden flex-grow'>
+                <h1 className='text-lg truncate'>{track.name}</h1>
+                <div className='flex flex-row space-x-1 whitespace-nowrap overflow-hidden'>
+                    <h1 className='text-xs truncate'>{track.artists[0].name}</h1>
+                    <h1 className='text-xs flex-shrink-0'>•</h1>
+                    <h1 className='text-xs truncate'>{track.album}</h1>
                 </div>
             </div>
         </div>

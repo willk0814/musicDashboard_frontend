@@ -5,7 +5,7 @@ interface ListeningStats {
     totalListeningTime: {
         minutes: number;
     }
-}
+};
 
 export default function ListeningStats() {
 
