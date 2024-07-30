@@ -46,7 +46,7 @@ export default function TopSongWidget() {
                     className='line-clamp-2 text-sm'>
                     {loading && 'Loading...'}
                     {error && 'Error'}
-                    {data !== null && data?.song}
+                    {data !== null && data.song}
                 </h1>
             </div>
         </div>
