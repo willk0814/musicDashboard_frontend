@@ -1,13 +1,13 @@
-import { useEffect, useState } from 'react';
+import { useState, useEffect } from 'react'
 
 interface Artist {
     artist: string;
     artistId: string;
     listens: number;
     imgURL: string;
-}
+};
 
-export default function FavoriteArtist() {
+export default function TopArtistWidget() {
 
     const [data, setData] = useState<Artist | null>(null);
     const [loading, setLoading] = useState<boolean>(true);
@@ -26,7 +26,7 @@ export default function FavoriteArtist() {
                 if (err instanceof Error) {
                     setError(err.message);
                 } else {
-                    setError('An unexpected error occurred');
+                    setError('An unexpected error has occurred');
                 }
             } finally {
                 setLoading(false);
@@ -34,22 +34,21 @@ export default function FavoriteArtist() {
         };
         fetchData();
     }, [])
+
     return (
-        <div className="w-[200px] h-[200px] rounded-md bg-green-900 m-1 p-1">
-            {loading && <h1>Loading...</h1>}
-            {error && <h1>Error encountered</h1>}
-            {data !== null &&
-                <div className='flex flex-col justify-between h-full'>
-                    <div className='flex w-full justify-end'>
-                        <img
-                            className='rounded-full h-[100px] w-[100px]'
-                            src={data.imgURL} />
-                    </div>
-                    <div>
-                        <h1 className='text-lg flex-nowrap'>{data.artist}</h1>
-                        <h1>{data.listens} Listens</h1>
-                    </div>
-                </div>}
+        <div className='bg-green-900 rounded-lg m-2 p-2 flex flex-row space-x-1'>
+            <img
+                className='w-[65px] h-[65px] rounded-full'
+                src={data?.imgURL} />
+
+            <div className='flex items-center overflow-hidden'>
+                <h1
+                    className='line-clamp-2 text-sm'>
+                    {loading && 'Loading...'}
+                    {error && 'Error'}
+                    {data !== null && data.artist}
+                </h1>
+            </div>
         </div>
     )
 }

@@ -16,3 +16,19 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+/* widget grid container */
+.widgetGridContainer {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+@media (max-width: 780px) {
+  .widgetGridContainer {
+    grid-template-columns: repeat(2, 1fr);
+    ;
+    grid-template-rows: repeat(2, auto);
+  }
+}
+
+/* widget grid element */
