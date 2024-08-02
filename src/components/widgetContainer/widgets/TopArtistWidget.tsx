@@ -1,4 +1,6 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react';
+import { IoPerson } from "react-icons/io5";
+
 
 interface Artist {
     artist: string;
@@ -36,18 +38,24 @@ export default function TopArtistWidget() {
     }, [])
 
     return (
-        <div className='bg-green-900 rounded-lg m-2 p-2 flex flex-row space-x-1'>
-            <img
-                className='w-[65px] h-[65px] rounded-full'
-                src={data?.imgURL} />
+        <div className='bg-green-900 rounded-lg m-2 p-2 flex flex-col'>
+            <div className='w-full flex flex-row space-x-1 justify-end items-center'>
+                <h1>Artist</h1>
+                <IoPerson size={35} />
+            </div>
+            <div className='flex flex-row space-x-1'>
+                <img
+                    className='w-[65px] h-[65px] rounded-full'
+                    src={data?.imgURL} />
 
-            <div className='flex items-center overflow-hidden'>
-                <h1
-                    className='line-clamp-2 text-sm'>
-                    {loading && 'Loading...'}
-                    {error && 'Error'}
-                    {data !== null && data.artist}
-                </h1>
+                <div className='flex items-center overflow-hidden'>
+                    <h1
+                        className='line-clamp-2 text-sm'>
+                        {loading && 'Loading...'}
+                        {error && 'Error'}
+                        {data !== null && data.artist}
+                    </h1>
+                </div>
             </div>
         </div>
     )

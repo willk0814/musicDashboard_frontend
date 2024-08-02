@@ -1,4 +1,6 @@
 import { useState, useEffect } from 'react'
+import { RiAlbumFill } from "react-icons/ri";
+
 
 interface Album {
     album: string;
@@ -36,18 +38,24 @@ export default function TopAlbumWidget() {
     }, []);
 
     return (
-        <div className='bg-green-900 rounded-lg m-2 p-2 flex flex-row space-x-1'>
-            <img
-                className='w-[65px] h-[65px] rounded-lg'
-                src={data?.imgURL} />
+        <div className='bg-green-900 rounded-lg m-2 p-2 flex flex-col'>
+            <div className='w-full flex flex-row space-x-1 justify-end items-center'>
+                <h1>Album</h1>
+                <RiAlbumFill size={35} />
+            </div>
+            <div className='flex flex-row space-x-1'>
+                <img
+                    className='w-[65px] h-[65px] rounded-lg'
+                    src={data?.imgURL} />
 
-            <div className='flex items-center overflow-hidden'>
-                <h1
-                    className='line-clamp-2 text-sm'>
-                    {loading && 'Loading...'}
-                    {error && 'Error'}
-                    {data !== null && data.album}
-                </h1>
+                <div className='flex items-center overflow-hidden'>
+                    <h1
+                        className='line-clamp-2 text-sm'>
+                        {loading && 'Loading...'}
+                        {error && 'Error'}
+                        {data !== null && data.album}
+                    </h1>
+                </div>
             </div>
 
         </div>
